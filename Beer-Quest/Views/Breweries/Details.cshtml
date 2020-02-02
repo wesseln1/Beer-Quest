@@ -1,8 +1,14 @@
 ﻿@model Beer_Quest.Models.Brewery
 
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Details";
 }
+
+@{var user = await UserManager.GetUserAsync(User);}
 
 <h1>Details</h1>
 
@@ -51,7 +57,7 @@
         </dt>
         <dd class="col-sm-10">
             <div>
-                @foreach(var drink in Model.Drinks)
+                @foreach (var drink in Model.Drinks)
                 {
                     <li>@Html.DisplayFor(model => drink.Name) (@Html.DisplayFor(model => drink.AlcoholPercent)% ALC/VOL)</li>
                 }
@@ -60,9 +66,9 @@
     </dl>
 </div>
 <div>
-   @if(Model.User.UserTypeId == 1 || Model.User.UserTypeId == 2)
-   {
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit |</a>
-   }
-    <a asp-action="Index">Back to List</a>
+    @*@if (user.UserTypeId == 1 || user.UserTypeId == 2)
+    {*@
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit |</a>
+        //}
+        <a asp-action="Index">Back to List</a>
 </div>

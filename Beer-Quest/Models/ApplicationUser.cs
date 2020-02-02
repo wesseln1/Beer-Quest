@@ -26,7 +26,8 @@ namespace Beer_Quest.Models
 
         public string Phone { get; set; }
 
-        public string Birthday{ get; set; }
+        public string DateOfBirth{ get; set; }
         public int UserTypeId { get; set; }
+        public UserType UserType { get; set; }
     }
 }

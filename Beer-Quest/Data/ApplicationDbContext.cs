@@ -11,7 +11,7 @@ namespace Beer_Quest.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Brewery> Brewery { get; set; }
         public DbSet<Comment> Comment { get; set; }
         public DbSet<Drink> Drink { get; set; }
@@ -29,7 +29,7 @@ namespace Beer_Quest.Data
                 FirstName = "admin",
                 LastName = "admin",
                 Phone = "(989)464-5890",
-                Birthday = "04-29-1997",
+                DateOfBirth = "04-29-1997",
                 UserTypeId = 1,
                 UserName = "admin@admin.com",
                 NormalizedUserName = "ADMIN@ADMIN.COM",
@@ -68,6 +68,7 @@ namespace Beer_Quest.Data
                 {
                     Id = 1,
                     Name = "Tennessee Brew Works",
+                    Address = "809 Ewing Ave",
                     City = "Nashville",
                     ZipCode = 37203,
                     Phone = "(615)436-0050",
@@ -79,6 +80,7 @@ namespace Beer_Quest.Data
                     Id = 2,
                     Name = "Czans",
                     City = "Nashville",
+                    Address = "505 Lea Ave, Nashville",
                     ZipCode = 37203,
                     Phone = "(615)748-1399",
                     CheersCount = 0,
@@ -89,6 +91,7 @@ namespace Beer_Quest.Data
                     Id = 3,
                     Name = "Yee Haw",
                     City = "Nashville",
+                    Address = "423 6th Ave S",
                     ZipCode = 37203,
                     Phone = "(615)647-8272",
                     CheersCount = 0,
@@ -99,8 +102,9 @@ namespace Beer_Quest.Data
                     Id = 4,
                     Name = "Jackalope",
                     City = "Nashville",
+                    Address = "701 8th Ave S",
                     ZipCode = 37203,
-                    Phone = "(615) 873-4313",
+                    Phone = "(615)873-4313",
                     CheersCount = 0,
                     UserId = user.Id
                 }

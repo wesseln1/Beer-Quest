@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beer_Quest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200131174536_adde-drinktype")]
-    partial class addedrinktype
+    [Migration("20200131221428_datbase_burn")]
+    partial class datbase_burn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,12 +44,14 @@ namespace Beer_Quest.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ZipCode")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Brewery");
 
@@ -801,11 +803,11 @@ namespace Beer_Quest.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Bangazon.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Beer_Quest.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Birthday")
+                    b.Property<string>("DateOfBirth")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -822,6 +824,8 @@ namespace Beer_Quest.Migrations
                     b.Property<int>("UserTypeId")
                         .HasColumnType("int");
 
+                    b.HasIndex("UserTypeId");
+
                     b.HasDiscriminator().HasValue("ApplicationUser");
 
                     b.HasData(
@@ -829,22 +833,29 @@ namespace Beer_Quest.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "db5d0cc2-c142-4ebe-adef-9ebb9bfc11c7",
+                            ConcurrencyStamp = "cbde4b7f-db8b-4cce-a760-5e46e2f187d6",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO7VBP+sWKHXQK/kV89q6vf6hMkWprd9gltv7ViQ4tMbPyet8gFNQjoKJ0ll5Esafw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBNRzxwZdKl6dsDPeyb6aZH/mbBo1FNiq852lftRFdtfuCBc+ziWoC8IvWaBtgq5hg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com",
-                            Birthday = "04-29-1997",
+                            DateOfBirth = "04-29-1997",
                             FirstName = "admin",
                             LastName = "admin",
                             Phone = "(989)464-5890",
                             UserTypeId = 1
                         });
+                });
+
+            modelBuilder.Entity("Beer_Quest.Models.Brewery", b =>
+                {
+                    b.HasOne("Beer_Quest.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Beer_Quest.Models.Drink", b =>
@@ -909,6 +920,15 @@ namespace Beer_Quest.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Beer_Quest.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Beer_Quest.Models.UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

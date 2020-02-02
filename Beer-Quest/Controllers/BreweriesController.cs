@@ -48,6 +48,7 @@ namespace Beer_Quest.Controllers
         // GET: Breweries/Create
         public IActionResult Create()
         {
+
             return View();
         }
 

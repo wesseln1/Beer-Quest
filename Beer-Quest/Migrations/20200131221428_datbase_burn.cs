@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Beer_Quest.Migrations
 {
-    public partial class init : Migration
+    public partial class datbase_burn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,56 +19,6 @@ namespace Beer_Quest.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AspNetUsers",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Email = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
-                    PasswordHash = table.Column<string>(nullable: true),
-                    SecurityStamp = table.Column<string>(nullable: true),
-                    ConcurrencyStamp = table.Column<string>(nullable: true),
-                    PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
-                    Discriminator = table.Column<string>(nullable: false),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
-                    Birthday = table.Column<string>(nullable: true),
-                    UserTypeId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Brewery",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(nullable: true),
-                    Address = table.Column<string>(nullable: true),
-                    City = table.Column<string>(nullable: true),
-                    ZipCode = table.Column<int>(nullable: false),
-                    Phone = table.Column<string>(nullable: true),
-                    CheersCount = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Brewery", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -142,6 +92,43 @@ namespace Beer_Quest.Migrations
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUsers",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
+                    Email = table.Column<string>(maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    PasswordHash = table.Column<string>(nullable: true),
+                    SecurityStamp = table.Column<string>(nullable: true),
+                    ConcurrencyStamp = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    Discriminator = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
+                    DateOfBirth = table.Column<string>(nullable: true),
+                    UserTypeId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_AspNetUsers_UserType_UserTypeId",
+                        column: x => x.UserTypeId,
+                        principalTable: "UserType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -232,6 +219,31 @@ namespace Beer_Quest.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Brewery",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    ZipCode = table.Column<int>(nullable: false),
+                    Phone = table.Column<string>(nullable: true),
+                    CheersCount = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Brewery", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Brewery_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Drink",
                 columns: table => new
                 {
@@ -252,22 +264,12 @@ namespace Beer_Quest.Migrations
                         principalTable: "Brewery",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "Birthday", "FirstName", "LastName", "Phone", "UserTypeId" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "e05773ae-afa9-4c35-a21f-a69c658dde27", "ApplicationUser", null, true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEItDqxT0F9G6wpEPplUY0rbtpeqsejU2oynZualaZYuGIkqB5Qkt/H8fM+Cuphar7g==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", "(989)464-5890", 1 });
-
-            migrationBuilder.InsertData(
-                table: "Brewery",
-                columns: new[] { "Id", "Address", "CheersCount", "City", "Name", "Phone", "UserId", "ZipCode" },
-                values: new object[,]
-                {
-                    { 1, null, 0, "Nashville", "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 2, null, 0, "Nashville", "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 3, null, 0, "Nashville", "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 4, null, 0, "Nashville", "Jackalope", "(615) 873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 }
+                    table.ForeignKey(
+                        name: "FK_Drink_DrinkType_DrinkTypeId",
+                        column: x => x.DrinkTypeId,
+                        principalTable: "DrinkType",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -275,18 +277,19 @@ namespace Beer_Quest.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 15, "Dark Wheat" },
-                    { 16, "Pale Ale" },
-                    { 17, "Blonde Ale" },
-                    { 18, "IPA" },
-                    { 19, "American Pale Ale" },
-                    { 21, "Dark Lager" },
-                    { 14, "Stout" },
-                    { 22, "Maple Brown Ale" },
-                    { 23, "Bohemian Pilsner" },
+                    { 1, "American Blonde Ale" },
                     { 24, "Red Rye Ale" },
+                    { 23, "Bohemian Pilsner" },
+                    { 22, "Maple Brown Ale" },
+                    { 21, "Dark Lager" },
                     { 20, "Scottish Style Ale" },
+                    { 19, "American Pale Ale" },
+                    { 18, "IPA" },
+                    { 17, "Blonde Ale" },
+                    { 16, "Pale Ale" },
+                    { 15, "Dark Wheat" },
                     { 13, "Session India Pale Ale" },
+                    { 14, "Stout" },
                     { 11, "English-Style Mild Ale" },
                     { 10, "Hazy Pale Ale" },
                     { 9, "Saison / Farmhouse Ale" },
@@ -297,7 +300,6 @@ namespace Beer_Quest.Migrations
                     { 4, "English-Style Pub Ale" },
                     { 3, "Belgian-Style White/Witbier" },
                     { 2, "India Pale Ale" },
-                    { 1, "American Blonde Ale" },
                     { 12, "American Session Porter" }
                 });
 
@@ -309,6 +311,22 @@ namespace Beer_Quest.Migrations
                     { 2, "Brew Admin" },
                     { 1, "Admin" },
                     { 3, "Non-Admin" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "DateOfBirth", "FirstName", "LastName", "Phone", "UserTypeId" },
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "cbde4b7f-db8b-4cce-a760-5e46e2f187d6", "ApplicationUser", null, true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEBNRzxwZdKl6dsDPeyb6aZH/mbBo1FNiq852lftRFdtfuCBc+ziWoC8IvWaBtgq5hg==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", "(989)464-5890", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Brewery",
+                columns: new[] { "Id", "Address", "CheersCount", "City", "Name", "Phone", "UserId", "ZipCode" },
+                values: new object[,]
+                {
+                    { 1, null, 0, "Nashville", "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 2, null, 0, "Nashville", "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 3, null, 0, "Nashville", "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 4, null, 0, "Nashville", "Jackalope", "(615) 873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 }
                 });
 
             migrationBuilder.InsertData(
@@ -375,6 +393,11 @@ namespace Beer_Quest.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_UserTypeId",
+                table: "AspNetUsers",
+                column: "UserTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
@@ -387,9 +410,19 @@ namespace Beer_Quest.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Brewery_UserId",
+                table: "Brewery",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Drink_BreweryId",
                 table: "Drink",
                 column: "BreweryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Drink_DrinkTypeId",
+                table: "Drink",
+                column: "DrinkTypeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -419,19 +452,19 @@ namespace Beer_Quest.Migrations
                 name: "Drink");
 
             migrationBuilder.DropTable(
-                name: "DrinkType");
-
-            migrationBuilder.DropTable(
-                name: "UserType");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Brewery");
+
+            migrationBuilder.DropTable(
+                name: "DrinkType");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Brewery");
+                name: "UserType");
         }
     }
 }

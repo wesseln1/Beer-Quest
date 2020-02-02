@@ -42,12 +42,14 @@ namespace Beer_Quest.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("ZipCode")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Brewery");
 
@@ -55,6 +57,7 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "809 Ewing Ave",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Tennessee Brew Works",
@@ -65,6 +68,7 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 2,
+                            Address = "505 Lea Ave, Nashville",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Czans",
@@ -75,6 +79,7 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 3,
+                            Address = "423 6th Ave S",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Yee Haw",
@@ -85,6 +90,7 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 4,
+                            Address = "701 8th Ave S",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Jackalope",
@@ -799,11 +805,11 @@ namespace Beer_Quest.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Bangazon.Models.ApplicationUser", b =>
+            modelBuilder.Entity("Beer_Quest.Models.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
-                    b.Property<string>("Birthday")
+                    b.Property<string>("DateOfBirth")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
@@ -820,6 +826,8 @@ namespace Beer_Quest.Migrations
                     b.Property<int>("UserTypeId")
                         .HasColumnType("int");
 
+                    b.HasIndex("UserTypeId");
+
                     b.HasDiscriminator().HasValue("ApplicationUser");
 
                     b.HasData(
@@ -827,22 +835,29 @@ namespace Beer_Quest.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "db5d0cc2-c142-4ebe-adef-9ebb9bfc11c7",
+                            ConcurrencyStamp = "bb882310-9f8b-4336-963e-e4bd202b2938",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO7VBP+sWKHXQK/kV89q6vf6hMkWprd9gltv7ViQ4tMbPyet8gFNQjoKJ0ll5Esafw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOzYxxef3be5jopgleZcahs1n1gpjvKF1Q3UQiC76iXfYDEkwQMUFY5zMPQ3Q7CXiQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com",
-                            Birthday = "04-29-1997",
+                            DateOfBirth = "04-29-1997",
                             FirstName = "admin",
                             LastName = "admin",
                             Phone = "(989)464-5890",
                             UserTypeId = 1
                         });
+                });
+
+            modelBuilder.Entity("Beer_Quest.Models.Brewery", b =>
+                {
+                    b.HasOne("Beer_Quest.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Beer_Quest.Models.Drink", b =>
@@ -907,6 +922,15 @@ namespace Beer_Quest.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Beer_Quest.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("Beer_Quest.Models.UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
