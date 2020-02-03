@@ -26,9 +26,16 @@ namespace Beer_Quest.Controllers
         }
 
         // GET: Breweries
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Brewery.Include(b => b.Drinks).ToListAsync());
+            if (searchString != null)
+            {
+                return View(await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString)).ToListAsync());
+            }
+            else
+            {
+                return View(await _context.Brewery.Include(b => b.Drinks).ToListAsync());
+            }
         }
 
         // GET: Breweries/Details/5
@@ -54,7 +61,6 @@ namespace Beer_Quest.Controllers
         // GET: Breweries/Create
         public IActionResult Create()
         {
-
             return View();
         }
 
@@ -63,9 +69,13 @@ namespace Beer_Quest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Address,City,ZipCode,Phone,CheersCount,UserId")] Brewery brewery, IFormFile image)
+        public async Task<IActionResult> Create([Bind("Id,Name,Address,City,ZipCode,Phone,CheersCount,UserId,File,ImagePath")] Brewery brewery, IFormFile file)
         {
             var user = await GetCurrentUserAsync();
+            if (ModelState.IsValid)
+            {
+                brewery.UserId = user.Id;
+            }
 
             if (brewery.File != null && brewery.File.Length > 0)
             {
@@ -77,14 +87,9 @@ namespace Beer_Quest.Controllers
                 }
                 brewery.ImagePath = fileName;
             }
-            if (ModelState.IsValid)
-            {
-                brewery.UserId = user.Id;
-                _context.Add(brewery);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(brewery);
+            _context.Add(brewery);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Breweries/Edit/5

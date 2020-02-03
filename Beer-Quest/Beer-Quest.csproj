@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\Images\tennesseBrewWorks.png" />
+    <None Include="wwwroot\Images\tennesseeBrewWorks.png" />
   </ItemGroup>
 
 

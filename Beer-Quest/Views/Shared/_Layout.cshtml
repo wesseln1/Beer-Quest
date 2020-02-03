@@ -29,6 +29,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    <div>
+                        <form asp-controller="Breweries" asp-action="Index">
+                            <div class="input-group">
+                                <input type="text" name="searchString" class="form-control" placeholder="Search by City" />
+                                <span class="input-group-btn">
+                                    <input type="submit" value="Search" class="btn btn-primary" />
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </nav>
