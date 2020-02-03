@@ -20,12 +20,6 @@ namespace Beer_Quest.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
-        [Required]
-        public string Email { get; set; }
-
-        public string Phone { get; set; }
-
         public string DateOfBirth{ get; set; }
         public int UserTypeId { get; set; }
         public UserType UserType { get; set; }

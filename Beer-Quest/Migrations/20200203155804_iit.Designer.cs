@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beer_Quest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200202143016_burned_daabase_added_brewery_adress")]
-    partial class burned_daabase_added_brewery_adress
+    [Migration("20200203155804_iit")]
+    partial class iit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace Beer_Quest.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -96,7 +99,7 @@ namespace Beer_Quest.Migrations
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Jackalope",
-                            Phone = "(615) 873-4313",
+                            Phone = "(615)873-4313",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ZipCode = 37203
                         });
@@ -822,9 +825,6 @@ namespace Beer_Quest.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("UserTypeId")
                         .HasColumnType("int");
 
@@ -837,12 +837,12 @@ namespace Beer_Quest.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bb882310-9f8b-4336-963e-e4bd202b2938",
+                            ConcurrencyStamp = "cc1f810b-0db3-4b3f-b1cf-0b74c3a65bca",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOzYxxef3be5jopgleZcahs1n1gpjvKF1Q3UQiC76iXfYDEkwQMUFY5zMPQ3Q7CXiQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEMfnsu0wFDwT9KpIV4IR7cgMk4CnjD+kNT9dyNqj78GuGrurXVHbIINbvZt7E86jLA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -850,7 +850,6 @@ namespace Beer_Quest.Migrations
                             DateOfBirth = "04-29-1997",
                             FirstName = "admin",
                             LastName = "admin",
-                            Phone = "(989)464-5890",
                             UserTypeId = 1
                         });
                 });

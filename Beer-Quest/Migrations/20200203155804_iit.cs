@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Beer_Quest.Migrations
 {
-    public partial class datbase_burn : Migration
+    public partial class iit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -118,7 +118,6 @@ namespace Beer_Quest.Migrations
                     Discriminator = table.Column<string>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<string>(nullable: true),
                     UserTypeId = table.Column<int>(nullable: true)
                 },
@@ -230,7 +229,8 @@ namespace Beer_Quest.Migrations
                     ZipCode = table.Column<int>(nullable: false),
                     Phone = table.Column<string>(nullable: true),
                     CheersCount = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(nullable: true),
+                    ImagePath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -315,18 +315,18 @@ namespace Beer_Quest.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "DateOfBirth", "FirstName", "LastName", "Phone", "UserTypeId" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "cbde4b7f-db8b-4cce-a760-5e46e2f187d6", "ApplicationUser", null, true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEBNRzxwZdKl6dsDPeyb6aZH/mbBo1FNiq852lftRFdtfuCBc+ziWoC8IvWaBtgq5hg==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", "(989)464-5890", 1 });
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "DateOfBirth", "FirstName", "LastName", "UserTypeId" },
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "cc1f810b-0db3-4b3f-b1cf-0b74c3a65bca", "ApplicationUser", null, true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEMfnsu0wFDwT9KpIV4IR7cgMk4CnjD+kNT9dyNqj78GuGrurXVHbIINbvZt7E86jLA==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", 1 });
 
             migrationBuilder.InsertData(
                 table: "Brewery",
-                columns: new[] { "Id", "Address", "CheersCount", "City", "Name", "Phone", "UserId", "ZipCode" },
+                columns: new[] { "Id", "Address", "CheersCount", "City", "ImagePath", "Name", "Phone", "UserId", "ZipCode" },
                 values: new object[,]
                 {
-                    { 1, null, 0, "Nashville", "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 2, null, 0, "Nashville", "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 3, null, 0, "Nashville", "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 4, null, 0, "Nashville", "Jackalope", "(615) 873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 }
+                    { 1, "809 Ewing Ave", 0, "Nashville", null, "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 2, "505 Lea Ave, Nashville", 0, "Nashville", null, "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 3, "423 6th Ave S", 0, "Nashville", null, "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 4, "701 8th Ave S", 0, "Nashville", null, "Jackalope", "(615)873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 }
                 });
 
             migrationBuilder.InsertData(

@@ -4,14 +4,16 @@ using Beer_Quest.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Beer_Quest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200203163620_added_phone_and_email")]
+    partial class added_phone_and_email
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -835,13 +837,13 @@ namespace Beer_Quest.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "e7bf73c7-c835-417f-8103-425af7abd38f",
+                            ConcurrencyStamp = "f6222485-0339-436f-b36a-02bf453b2b36",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENXUNKqoJE084GE6OV3xI4JpmlFqhCkK34bO7IpRTzd0it0GAFJ2QLTvjLQ0U5i+SQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHby/7X/RIK8zyVE+K+BWhm76J0eMHnWfn+Dbhaj95hqhGXsj3JwfLDG6A+r0pHuwg==",
                             PhoneNumber = "(989)464-5890",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",

@@ -28,7 +28,7 @@ namespace Beer_Quest.Data
             {
                 FirstName = "admin",
                 LastName = "admin",
-                Phone = "(989)464-5890",
+                PhoneNumber = "(989)464-5890",
                 DateOfBirth = "04-29-1997",
                 UserTypeId = 1,
                 UserName = "admin@admin.com",
@@ -36,6 +36,7 @@ namespace Beer_Quest.Data
                 Email = "admin@admin.com",
                 NormalizedEmail = "ADMIN@ADMIN.COM",
                 EmailConfirmed = true,
+                PhoneNumberConfirmed = true,
                 LockoutEnabled = false,
                 SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                 Id = "00000000-ffff-ffff-ffff-ffffffffffff"

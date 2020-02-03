@@ -7,16 +7,22 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Beer_Quest.Data;
 using Beer_Quest.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace Beer_Quest.Controllers
 {
     public class BreweriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public BreweriesController(ApplicationDbContext context)
+        public BreweriesController(ApplicationDbContext context,
+            UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Breweries
@@ -57,10 +63,23 @@ namespace Beer_Quest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Address,City,ZipCode,Phone,CheersCount,UserId")] Brewery brewery)
+        public async Task<IActionResult> Create([Bind("Id,Name,Address,City,ZipCode,Phone,CheersCount,UserId")] Brewery brewery, IFormFile image)
         {
+            var user = await GetCurrentUserAsync();
+
+            if (brewery.File != null && brewery.File.Length > 0)
+            {
+                var fileName = Path.GetFileName(brewery.File.FileName); //getting path of actual file name
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Images", fileName); //creating path combining file name w/ www.root\\images directory
+                using (var fileSteam = new FileStream(filePath, FileMode.Create)) //using filestream to get the actual path 
+                {
+                    await brewery.File.CopyToAsync(fileSteam);
+                }
+                brewery.ImagePath = fileName;
+            }
             if (ModelState.IsValid)
             {
+                brewery.UserId = user.Id;
                 _context.Add(brewery);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -152,5 +171,7 @@ namespace Beer_Quest.Controllers
         {
             return _context.Brewery.Any(e => e.Id == id);
         }
+
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }

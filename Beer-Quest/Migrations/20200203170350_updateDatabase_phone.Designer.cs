@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Beer_Quest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200131221428_datbase_burn")]
-    partial class datbase_burn
+    [Migration("20200203170350_updateDatabase_phone")]
+    partial class updateDatabase_phone
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,9 @@ namespace Beer_Quest.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -59,6 +62,7 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 1,
+                            Address = "809 Ewing Ave",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Tennessee Brew Works",
@@ -69,6 +73,7 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 2,
+                            Address = "505 Lea Ave, Nashville",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Czans",
@@ -79,6 +84,7 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 3,
+                            Address = "423 6th Ave S",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Yee Haw",
@@ -89,10 +95,11 @@ namespace Beer_Quest.Migrations
                         new
                         {
                             Id = 4,
+                            Address = "701 8th Ave S",
                             CheersCount = 0,
                             City = "Nashville",
                             Name = "Jackalope",
-                            Phone = "(615) 873-4313",
+                            Phone = "(615)873-4313",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ZipCode = 37203
                         });
@@ -818,9 +825,6 @@ namespace Beer_Quest.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("UserTypeId")
                         .HasColumnType("int");
 
@@ -833,20 +837,21 @@ namespace Beer_Quest.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "cbde4b7f-db8b-4cce-a760-5e46e2f187d6",
+                            ConcurrencyStamp = "e7bf73c7-c835-417f-8103-425af7abd38f",
+                            Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBNRzxwZdKl6dsDPeyb6aZH/mbBo1FNiq852lftRFdtfuCBc+ziWoC8IvWaBtgq5hg==",
-                            PhoneNumberConfirmed = false,
+                            PasswordHash = "AQAAAAEAACcQAAAAENXUNKqoJE084GE6OV3xI4JpmlFqhCkK34bO7IpRTzd0it0GAFJ2QLTvjLQ0U5i+SQ==",
+                            PhoneNumber = "(989)464-5890",
+                            PhoneNumberConfirmed = true,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com",
                             DateOfBirth = "04-29-1997",
                             FirstName = "admin",
                             LastName = "admin",
-                            Phone = "(989)464-5890",
                             UserTypeId = 1
                         });
                 });

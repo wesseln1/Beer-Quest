@@ -65,7 +65,6 @@ namespace Beer_Quest.Areas.Identity.Pages.Account
             public string FirstName { get; set; }
             [Required]
             public string LastName { get; set; }
-            public string Phone { get; set; }
             public string DateOfBirth { get; set; }
             public int UserTypeId { get; set; }
         }
@@ -82,7 +81,7 @@ namespace Beer_Quest.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, UserTypeId = Input.UserTypeId, FirstName = Input.FirstName, LastName = Input.LastName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
