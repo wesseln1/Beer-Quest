@@ -10,6 +10,7 @@ using Beer_Quest.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Identity;
+using Beer_Quest.Models.ViewModels;
 
 namespace Beer_Quest.Controllers
 {
@@ -30,11 +31,33 @@ namespace Beer_Quest.Controllers
         {
             if (searchString != null)
             {
-                return View(await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString)).ToListAsync());
+                var model = await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString)).Select(b => new BreweryCheerCountViewModel
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    Address = b.Address,
+                    Phone = b.Phone,
+                    ZipCode = b.ZipCode,
+                    City = b.City,
+                    ImagePath = b.ImagePath,
+                    CheersCount = b.Cheers.Count()
+                }).ToListAsync();
+                return View(model);
             }
             else
             {
-                return View(await _context.Brewery.Include(b => b.Drinks).ToListAsync());
+                var model = await _context.Brewery.Include(b => b.Drinks).Select(b => new BreweryCheerCountViewModel
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    Address = b.Address,
+                    Phone = b.Phone,
+                    ZipCode = b.ZipCode,
+                    City = b.City,
+                    ImagePath = b.ImagePath,
+                    CheersCount = b.Cheers.Count()
+                }).ToListAsync();
+                return View(model);
             }
         }
 
@@ -90,6 +113,20 @@ namespace Beer_Quest.Controllers
             _context.Add(brewery);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateCheer([Bind("Id,UserId,BreweryId")] Cheer cheer)
+        {
+            if (ModelState.IsValid)
+            {
+    
+                _context.Add(cheer);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index", "Breweries");
+            }
+            return View();
         }
 
         // GET: Breweries/Edit/5
