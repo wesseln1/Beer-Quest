@@ -18,7 +18,7 @@
         @Html.DisplayFor(model => model.Name)
     </h4>
     <p class="text-center">
-       Cheers @Html.DisplayFor(model => model.CheersCount)
+        Cheers @Html.DisplayFor(model => model.CheersCount)
     </p>
     <hr />
     <dl class="col text-center">
@@ -58,6 +58,11 @@
                 }
             </div>
         </dd>
+        <dt class="order-sm-10">
+            <form asp-action="Index" asp-controller="Comments" asp-route-breweryId="@Model.Id">
+                <button>View Comments</button>
+            </form>
+        </dt>
     </dl>
 </div>
 <div>
