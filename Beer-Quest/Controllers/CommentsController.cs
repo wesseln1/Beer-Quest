@@ -9,6 +9,7 @@ using Beer_Quest.Data;
 using Beer_Quest.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Beer_Quest.Models.ViewModels;
 
 namespace Beer_Quest.Controllers
 {
@@ -25,9 +26,30 @@ namespace Beer_Quest.Controllers
         }
 
         // GET: Comments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int breweryId)
         {
-            return View(await _context.Comment.ToListAsync());
+            var comments = await _context.Comment.Where(c => c.BreweryId == breweryId).ToListAsync();
+            var brewery = _context.Brewery.FirstOrDefault(b => b.Id == breweryId);
+            ViewBag.BreweryId = breweryId;
+            ViewBag.Brewery = brewery;
+            ViewBag.BreweryImage = brewery.ImagePath;
+            if (comments.Count() > 0)
+            {
+                var viewModel = new BreweryCommentViewModel
+                {
+                    Brewery = brewery,
+                    Comments = comments
+                };
+                return View(viewModel);
+            }
+            else
+            {
+                var viewModel = new BreweryCommentViewModel
+                {
+                    Brewery = brewery
+                };
+                return View("NoComments");
+            }
         }
 
         // GET: Comments/Details/5
@@ -49,6 +71,7 @@ namespace Beer_Quest.Controllers
         }
 
         [Authorize]
+
         // GET: Comments/Create
         public IActionResult Create()
         {
@@ -61,17 +84,20 @@ namespace Beer_Quest.Controllers
         //[Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int breweryId)
+        public async Task<IActionResult> Create(int breweryId, BreweryCommentViewModel viewModel)
         {
-            var user = GetCurrentUserAsync();
-            var comment = new Comment();
+            var user = await GetCurrentUserAsync();
+            var comment = new Comment
+            {
+                BreweryId = breweryId,
+                Text = viewModel.UserComment,
+                UserId = user.Id
+            };
             if (ModelState.IsValid)
             {
-                comment.BreweryId = breweryId;
-                
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { breweryId });
             }
             return View(comment);
         }
