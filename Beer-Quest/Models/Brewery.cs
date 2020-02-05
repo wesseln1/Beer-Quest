@@ -23,5 +23,6 @@ namespace Beer_Quest.Models
         public virtual ICollection<Drink> Drinks { get; set; }
         public ApplicationUser User { get; set; }
         public List<Cheer> Cheers { get; set; } 
+        public List<Comment> Comments { get; set; }
     }
 }
