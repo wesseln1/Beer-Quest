@@ -44,9 +44,20 @@
             <tr>
                 <td>
                     <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
-                    <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@item.Id">
-                        <button type="submit">Cheers</button>
-                    </form> @Html.DisplayFor(modelItem => item.CheersCount)
+                    @if (user != null)
+                    {
+                        <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@item.Id">
+                            <button type="submit" class="cheersButton"><img src="~/Images/CheersButton.png" height="25px" width="25px"/></button>
+                            @Html.DisplayFor(modelItem => item.CheersCount)
+                        </form>
+                    }
+                    else
+                    {
+                        <p>
+                            Cheers:
+                            @Html.DisplayFor(modelItem => item.CheersCount)
+                        </p>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)

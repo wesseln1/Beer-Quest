@@ -16,6 +16,8 @@ namespace Beer_Quest.Models.ViewModels
         public int CheersCount { get; set; }
         public int CommentCount { get; set; }
         public string UserId { get; set; }
+        public List<Drink> Drinks { get; set; }
+        public List<Comment> Comments { get; set; }
         public string ImagePath { get; set; }
     }
 }

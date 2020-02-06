@@ -29,11 +29,15 @@ namespace Beer_Quest.Controllers
         // GET: Breweries
         public async Task<IActionResult> Index(string searchString)
         {
+            var integerTerm = -1;
+            Int32.TryParse(searchString, out integerTerm);
+
             if (searchString != null)
             {
-                var model = await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString) || b.Name.Contains(searchString)).Select(b => new BreweryCheerCountViewModel
+                var model = await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString) || b.Name.Contains(searchString) || b.ZipCode == integerTerm).Select(b => new BreweryCheerCountViewModel
                 {
-                    Id = b.Id,
+                    Id = b.Id, 
+
                     Name = b.Name,
                     Address = b.Address,
                     Phone = b.Phone,
@@ -73,12 +77,24 @@ namespace Beer_Quest.Controllers
             var brewery = await _context.Brewery
                 .Include(b => b.Drinks)
                 .Include(b => b.User)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            ViewBag.Brewery = brewery.Id;
+                .Select(b => new BreweryCheerCountViewModel
+                {
+                    Id = b.Id,
+                    Name = b.Name,
+                    ImagePath = b.ImagePath,
+                    Phone = b.Phone,
+                    Address = b.Address,
+                    City = b.City,
+                    ZipCode = b.ZipCode,
+                    Drinks = b.Drinks.ToList(),
+                    CheersCount = b.Cheers.Count(),
+                    CommentCount = b.Comments.Count()
+                }).FirstOrDefaultAsync(m => m.Id == id);
             if (brewery == null)
             {
                 return NotFound();
             }
+            ViewBag.Brewery = brewery.Id;
 
             return View(brewery);
         }
@@ -123,7 +139,7 @@ namespace Beer_Quest.Controllers
         {
             if (ModelState.IsValid)
             {
-    
+
                 _context.Add(cheer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Breweries");

@@ -33,9 +33,6 @@
         <tr>
             <td>
                 <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + ViewBag.BreweryImage)" alt="" />
-                <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@brewery.Id">
-                    <button type="submit">Cheers</button>
-                </form> @Html.DisplayFor(model => model.Brewery.CheersCount)
             </td>
             <td>
                 @Html.DisplayFor(model => model.Brewery.Name)
@@ -79,10 +76,17 @@
     </tbody>
 </table>
 <div>
-    <form asp-action="Create" asp-controller="Comments" asp-route-breweryId="@ViewBag.BreweryId">
-        <div class="form-group">
-            <input asp-for="UserComment" class="form-control" />
-        </div>
-        <button type="submit">Comment</button>
-    </form>
+    @if (user != null)
+    {
+        <form asp-action="Create" asp-controller="Comments" asp-route-breweryId="@ViewBag.BreweryId">
+            <div class="form-group">
+                <input asp-for="UserComment" class="form-control" />
+            </div>
+            <button type="submit">Comment</button>
+        </form>
+    }
+    else
+    {
+        <p>*Please sign in to leave a comment.*</p>
+    }
 </div>
