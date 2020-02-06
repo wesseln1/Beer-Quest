@@ -31,7 +31,7 @@ namespace Beer_Quest.Controllers
         {
             if (searchString != null)
             {
-                var model = await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString)).Select(b => new BreweryCheerCountViewModel
+                var model = await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString) || b.Name.Contains(searchString)).Select(b => new BreweryCheerCountViewModel
                 {
                     Id = b.Id,
                     Name = b.Name,
@@ -73,6 +73,7 @@ namespace Beer_Quest.Controllers
                 .Include(b => b.Drinks)
                 .Include(b => b.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
+            ViewBag.Brewery = brewery.Id;
             if (brewery == null)
             {
                 return NotFound();

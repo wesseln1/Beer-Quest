@@ -17,8 +17,11 @@
         <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
         @Html.DisplayFor(model => model.Name)
     </h4>
+    <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@ViewBag.BreweryId">
+        <button type="submit">Cheers</button>
+    </form> @Html.DisplayFor(model => model.CheersCount)
     <p class="text-center">
-       Cheers @Html.DisplayFor(model => model.CheersCount)
+        Cheers @Html.DisplayFor(model => model.CheersCount)
     </p>
     <hr />
     <dl class="col text-center">
