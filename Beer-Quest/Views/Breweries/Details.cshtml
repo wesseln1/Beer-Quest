@@ -61,6 +61,11 @@
                 }
             </div>
         </dd>
+        <dt class="order-sm-10">
+            <form asp-action="Index" asp-controller="Comments" asp-route-breweryId="@Model.Id">
+                <button>View Comments</button>
+            </form>
+        </dt>
     </dl>
 </div>
 <div>

@@ -40,7 +40,8 @@ namespace Beer_Quest.Controllers
                     ZipCode = b.ZipCode,
                     City = b.City,
                     ImagePath = b.ImagePath,
-                    CheersCount = b.Cheers.Count()
+                    CheersCount = b.Cheers.Count(),
+                    CommentCount = b.Comments.Count()
                 }).ToListAsync();
                 return View(model);
             }

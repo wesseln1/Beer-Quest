@@ -1,0 +1,88 @@
+﻿@model Beer_Quest.Models.ViewModels.BreweryCommentViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{var user = await UserManager.GetUserAsync(User);}
+@{var userId = Html.DisplayFor(model => model.Brewery.UserId);}
+@{var brewery = ViewBag.Brewery; }
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Brewery.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brewery.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brewery.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brewery.Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + ViewBag.BreweryImage)" alt="" />
+                <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@brewery.Id">
+                    <button type="submit">Cheers</button>
+                </form> @Html.DisplayFor(model => model.Brewery.CheersCount)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Brewery.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Brewery.City)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Brewery.Phone)
+            </td>
+            <td>
+                @if (user != null)
+                {
+                    @if (user.UserTypeId == 1 || user.UserTypeId == 2 && user.Id.Equals(userId))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Html.DisplayFor(model => model.Brewery.Id)">Edit |</a>
+                    }
+                }
+                <a asp-action="Details" asp-route-id="@Html.DisplayFor(model => model.Brewery.Id)">Details</a>
+                @*< asp-action="Delete" asp-route-id="@item.Id">Delete</>*@
+            </td>
+        </tr>
+        @foreach (var item in Model.Comments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                @if (user != null)
+                {
+                    @if (user.Id == item.UserId)
+                    {
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <form asp-action="Create" asp-controller="Comments" asp-route-breweryId="@ViewBag.BreweryId">
+        <div class="form-group">
+            <input asp-for="UserComment" class="form-control" />
+        </div>
+        <button type="submit">Comment</button>
+    </form>
+</div>
