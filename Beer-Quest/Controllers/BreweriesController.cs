@@ -37,7 +37,6 @@ namespace Beer_Quest.Controllers
                 var model = await _context.Brewery.Include(b => b.Drinks).Where(b => b.City.Contains(searchString) || b.Name.Contains(searchString) || b.ZipCode == integerTerm).Select(b => new BreweryCheerCountViewModel
                 {
                     Id = b.Id, 
-
                     Name = b.Name,
                     Address = b.Address,
                     Phone = b.Phone,
