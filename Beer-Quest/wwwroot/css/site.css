@@ -22,6 +22,11 @@ a {
     border: none !important;
 }
 
+.image-button {
+    max-height: 150px !important;
+    max-width: 150px !important;
+}
+
 button span {
     display: none !important;
 }

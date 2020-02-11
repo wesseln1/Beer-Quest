@@ -59,7 +59,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Text)
+                    @Html.DisplayFor(modelItem => item.Text) -@Html.DisplayFor(modelItem => item.User.FirstName) @Html.DisplayFor(modelItem => item.User.LastName)
                 </td>
                 @if (user != null)
                 {

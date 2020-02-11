@@ -74,6 +74,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)436-0050",
                     CheersCount = 0,
+                    ImagePath = "~/Images/tennesseeBrewWorks.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -85,6 +86,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)748-1399",
                     CheersCount = 0,
+                    ImagePath = "~/Images/czanns.jpg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -96,6 +98,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)647-8272",
                     CheersCount = 0,
+                    ImagePath = "~/Images/yee_haw.jpg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -107,8 +110,118 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)873-4313",
                     CheersCount = 0,
+                    ImagePath = "~/Images/jackalope.jpg",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 11,
+                    Name = "Fat Bottom Brewering Co",
+                    City = "Nashville",
+                    Address = "800 44th Ave N",
+                    ZipCode = 37209,
+                    Phone = "(615) 678-5715",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/fatBottom.png",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 12,
+                    Name = "Harding House Brewing Co",
+                    City = "Nashville",
+                    Address = "904 51st Ave N",
+                    ZipCode = 37209,
+                    Phone = "(615) 678-1047",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/hardingHouse.png",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 13,
+                    Name = "TailGate Brewery",
+                    City = "Nashville",
+                    Address = "7300 Charlotte Pike",
+                    ZipCode = 37209,
+                    Phone = "(615) 861-9842",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/tailgate_brewery.jpeg",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 14,
+                    Name = "Brewhouse 100",
+                    City = "Nashville",
+                    Address = "8098 TN-100",
+                    ZipCode = 37221,
+                    Phone = "(615) 673-2981",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/brewhouse100.jpeg",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 15,
+                    Name = "Little Harpeth Brewing",
+                    City = "Nashville",
+                    Address = "30 Oldham St",
+                    ZipCode = 37213,
+                    Phone = "(615) 942-7066",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/littleHarpeth.png",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 16,
+                    Name = "New Heights Brewing Company",
+                    City = "Nashville",
+                    Address = "928 5th Ave S",
+                    ZipCode = 37203,
+                    Phone = "(615) 490-6901",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/newHeights.jpeg",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 17,
+                    Name = "Turtle Anarchy Brewing Co",
+                    City = "Nashville",
+                    Address = "5901 California Ave Suite 105",
+                    ZipCode = 37209,
+                    Phone = "N/A",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/turtle.png",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 18,
+                    Name = "Bearded Iris Brewing",
+                    City = "Nashville",
+                    Address = "101 Van Buren St",
+                    ZipCode = 37208,
+                    Phone = "(615) 928-7988",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/beardedIris.png",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 19,
+                    Name = "Smith & Lentz Brewing",
+                    City = "Nashville",
+                    Address = "903 Main St",
+                    ZipCode = 37206,
+                    Phone = "(615) 436-2195",
+                    CheersCount = 0,
+                    ImagePath = "~/Images/smithLentz.png",
                     UserId = user.Id
                 }
+
             );
 
             modelBuilder.Entity<Drink>().HasData(
