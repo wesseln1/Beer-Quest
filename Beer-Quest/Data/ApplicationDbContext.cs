@@ -74,7 +74,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)436-0050",
                     CheersCount = 0,
-                    ImagePath = "~/Images/tennesseeBrewWorks.png",
+                    ImagePath = "tennesseeBrewWorks.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -86,7 +86,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)748-1399",
                     CheersCount = 0,
-                    ImagePath = "~/Images/czanns.jpg",
+                    ImagePath = "czanns.jpg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -98,7 +98,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)647-8272",
                     CheersCount = 0,
-                    ImagePath = "~/Images/yee_haw.jpg",
+                    ImagePath = "yee_haw.jpg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -110,7 +110,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)873-4313",
                     CheersCount = 0,
-                    ImagePath = "~/Images/jackalope.jpg",
+                    ImagePath = "jackalope.jpg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -122,7 +122,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37209,
                     Phone = "(615) 678-5715",
                     CheersCount = 0,
-                    ImagePath = "~/Images/fatBottom.png",
+                    ImagePath = "fatBottom.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -134,7 +134,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37209,
                     Phone = "(615) 678-1047",
                     CheersCount = 0,
-                    ImagePath = "~/Images/hardingHouse.png",
+                    ImagePath = "hardingHouse.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -146,7 +146,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37209,
                     Phone = "(615) 861-9842",
                     CheersCount = 0,
-                    ImagePath = "~/Images/tailgate_brewery.jpeg",
+                    ImagePath = "tailgate_brewery.jpeg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -158,7 +158,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37221,
                     Phone = "(615) 673-2981",
                     CheersCount = 0,
-                    ImagePath = "~/Images/brewhouse100.jpeg",
+                    ImagePath = "brewhouse100.jpeg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -170,7 +170,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37213,
                     Phone = "(615) 942-7066",
                     CheersCount = 0,
-                    ImagePath = "~/Images/littleHarpeth.png",
+                    ImagePath = "littleHarpeth.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -182,7 +182,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615) 490-6901",
                     CheersCount = 0,
-                    ImagePath = "~/Images/newHeights.jpeg",
+                    ImagePath = "newHeights.jpeg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -194,7 +194,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37209,
                     Phone = "N/A",
                     CheersCount = 0,
-                    ImagePath = "~/Images/turtle.png",
+                    ImagePath = "turtle.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -206,7 +206,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37208,
                     Phone = "(615) 928-7988",
                     CheersCount = 0,
-                    ImagePath = "~/Images/beardedIris.png",
+                    ImagePath = "beardedIris.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -218,7 +218,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37206,
                     Phone = "(615) 436-2195",
                     CheersCount = 0,
-                    ImagePath = "~/Images/smithLentz.png",
+                    ImagePath = "smithLentz.png",
                     UserId = user.Id
                 }
 
