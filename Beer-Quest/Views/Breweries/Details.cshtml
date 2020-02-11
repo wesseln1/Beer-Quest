@@ -19,16 +19,16 @@
     </h4>
     @if (user != null)
     {
-        <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@ViewBag.BreweryId" class="text-center">
-            <button type="submit">Cheers</button>
-            @Html.DisplayFor(model => model.CheersCount)
+        <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@ViewBag.Brewery.Id">
+            <button type="submit" class="image-button"><img class="image-button" src="~/Images/CheersButton.png" /></button>
+             @ViewBag.Brewery.CheersCount
         </form>
     }
     else
     {
-        <p class=" text-center">
+        <p>
             Cheers:
-            @Html.DisplayFor(model => model.CheersCount)
+            @ViewBag.Brewery.CheersCount
         </p>
     }
     <hr />
