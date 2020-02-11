@@ -12,6 +12,25 @@ a {
   color: #0366d6;
 }
 
+.cheersButton {
+    background-image: url(~/Images/CheersButton.png) !important;
+    background-repeat: no-repeat !important;
+    background-position: 50% 50% !important;
+    /* put the height and width of your image here */
+    height: 50px !important;
+    width: 200px !important;
+    border: none !important;
+}
+
+.image-button {
+    max-height: 150px !important;
+    max-width: 150px !important;
+}
+
+button span {
+    display: none !important;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;

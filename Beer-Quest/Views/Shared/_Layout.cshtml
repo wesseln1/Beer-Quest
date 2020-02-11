@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{var user = await UserManager.GetUserAsync(User);}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,6 +30,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Breweries" asp-action="Index">Breweries</a>
                         </li>
+                        @if (user != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Cheers" asp-action="Index">My Cheers</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
@@ -32,7 +43,7 @@
                     <div>
                         <form asp-controller="Breweries" asp-action="Index">
                             <div class="input-group">
-                                <input type="text" name="searchString" class="form-control" placeholder="Search by City" />
+                                <input type="text" name="searchString" class="form-control" placeholder="Search by city or brewery name" />
                                 <span class="input-group-btn">
                                     <input type="submit" value="Search" class="btn btn-primary" />
                                 </span>

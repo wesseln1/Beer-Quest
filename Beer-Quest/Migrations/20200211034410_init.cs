@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Beer_Quest.Migrations
 {
-    public partial class iit : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -19,34 +19,6 @@ namespace Beer_Quest.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Cheer",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(nullable: false),
-                    BreweryId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cheer", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Comment",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BreweryId = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Comment", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -244,6 +216,53 @@ namespace Beer_Quest.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cheer",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(nullable: true),
+                    BreweryId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cheer", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Cheer_Brewery_BreweryId",
+                        column: x => x.BreweryId,
+                        principalTable: "Brewery",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comment",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Text = table.Column<string>(nullable: true),
+                    BreweryId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comment", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comment_Brewery_BreweryId",
+                        column: x => x.BreweryId,
+                        principalTable: "Brewery",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Comment_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Drink",
                 columns: table => new
                 {
@@ -316,17 +335,26 @@ namespace Beer_Quest.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "DateOfBirth", "FirstName", "LastName", "UserTypeId" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "cc1f810b-0db3-4b3f-b1cf-0b74c3a65bca", "ApplicationUser", null, true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEMfnsu0wFDwT9KpIV4IR7cgMk4CnjD+kNT9dyNqj78GuGrurXVHbIINbvZt7E86jLA==", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", 1 });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "4e08aba6-904d-4ce8-83bb-fd595519efdb", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEEc09YdNE5LsnOVl6McYKTuiZS9HwUkfAxcz9H3C4EWdZ7WaC0p/TcBH6FRb9moWMQ==", "(989)464-5890", true, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", 1 });
 
             migrationBuilder.InsertData(
                 table: "Brewery",
                 columns: new[] { "Id", "Address", "CheersCount", "City", "ImagePath", "Name", "Phone", "UserId", "ZipCode" },
                 values: new object[,]
                 {
-                    { 1, "809 Ewing Ave", 0, "Nashville", null, "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 2, "505 Lea Ave, Nashville", 0, "Nashville", null, "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 3, "423 6th Ave S", 0, "Nashville", null, "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 4, "701 8th Ave S", 0, "Nashville", null, "Jackalope", "(615)873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 }
+                    { 1, "809 Ewing Ave", 0, "Nashville", "~/Images/tennesseeBrewWorks.png", "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 2, "505 Lea Ave, Nashville", 0, "Nashville", "~/Images/czanns.jpg", "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 3, "423 6th Ave S", 0, "Nashville", "~/Images/yee_haw.jpg", "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 4, "701 8th Ave S", 0, "Nashville", "~/Images/jackalope.jpg", "Jackalope", "(615)873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 11, "800 44th Ave N", 0, "Nashville", "~/Images/fatBottom.png", "Fat Bottom Brewering Co", "(615) 678-5715", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 12, "904 51st Ave N", 0, "Nashville", "~/Images/hardingHouse.png", "Harding House Brewing Co", "(615) 678-1047", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 13, "7300 Charlotte Pike", 0, "Nashville", "~/Images/tailgate_brewery.jpeg", "TailGate Brewery", "(615) 861-9842", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 14, "8098 TN-100", 0, "Nashville", "~/Images/brewhouse100.jpeg", "Brewhouse 100", "(615) 673-2981", "00000000-ffff-ffff-ffff-ffffffffffff", 37221 },
+                    { 15, "30 Oldham St", 0, "Nashville", "~/Images/littleHarpeth.png", "Little Harpeth Brewing", "(615) 942-7066", "00000000-ffff-ffff-ffff-ffffffffffff", 37213 },
+                    { 16, "928 5th Ave S", 0, "Nashville", "~/Images/newHeights.jpeg", "New Heights Brewing Company", "(615) 490-6901", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 17, "5901 California Ave Suite 105", 0, "Nashville", "~/Images/turtle.png", "Turtle Anarchy Brewing Co", "N/A", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 18, "101 Van Buren St", 0, "Nashville", "~/Images/beardedIris.png", "Bearded Iris Brewing", "(615) 928-7988", "00000000-ffff-ffff-ffff-ffffffffffff", 37208 },
+                    { 19, "903 Main St", 0, "Nashville", "~/Images/smithLentz.png", "Smith & Lentz Brewing", "(615) 436-2195", "00000000-ffff-ffff-ffff-ffffffffffff", 37206 }
                 });
 
             migrationBuilder.InsertData(
@@ -412,6 +440,21 @@ namespace Beer_Quest.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Brewery_UserId",
                 table: "Brewery",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cheer_BreweryId",
+                table: "Cheer",
+                column: "BreweryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comment_BreweryId",
+                table: "Comment",
+                column: "BreweryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comment_UserId",
+                table: "Comment",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(

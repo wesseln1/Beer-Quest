@@ -1,4 +1,4 @@
-﻿@model Beer_Quest.Models.Brewery
+﻿@model Beer_Quest.Models.ViewModels.BreweryCheerCountViewModel
 
 @using Microsoft.AspNetCore.Identity
 
@@ -17,9 +17,20 @@
         <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
         @Html.DisplayFor(model => model.Name)
     </h4>
-    <p class="text-center">
-        Cheers @Html.DisplayFor(model => model.CheersCount)
-    </p>
+    @if (user != null)
+    {
+        <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@ViewBag.BreweryId" class="text-center">
+            <button type="submit">Cheers</button>
+            @Html.DisplayFor(model => model.CheersCount)
+        </form>
+    }
+    else
+    {
+        <p class=" text-center">
+            Cheers:
+            @Html.DisplayFor(model => model.CheersCount)
+        </p>
+    }
     <hr />
     <dl class="col text-center">
         <dt class="order-sm-2 ">
@@ -58,12 +69,13 @@
                 }
             </div>
         </dd>
-        <dt class="order-sm-10">
-            <form asp-action="Index" asp-controller="Comments" asp-route-breweryId="@Model.Id">
-                <button>View Comments</button>
-            </form>
-        </dt>
     </dl>
+    <div class="text-center">
+        <form asp-action="Index" asp-controller="Comments" asp-route-breweryId="@Model.Id">
+            <p>@Html.DisplayFor(model => model.CommentCount) Total Comments</p>
+            <button>View Comments</button>
+        </form>
+    </div>
 </div>
 <div>
     @if (user == null)

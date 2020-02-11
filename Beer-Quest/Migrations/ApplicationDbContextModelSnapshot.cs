@@ -63,6 +63,7 @@ namespace Beer_Quest.Migrations
                             Address = "809 Ewing Ave",
                             CheersCount = 0,
                             City = "Nashville",
+                            ImagePath = "~/Images/tennesseeBrewWorks.png",
                             Name = "Tennessee Brew Works",
                             Phone = "(615)436-0050",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
@@ -74,6 +75,7 @@ namespace Beer_Quest.Migrations
                             Address = "505 Lea Ave, Nashville",
                             CheersCount = 0,
                             City = "Nashville",
+                            ImagePath = "~/Images/czanns.jpg",
                             Name = "Czans",
                             Phone = "(615)748-1399",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
@@ -85,6 +87,7 @@ namespace Beer_Quest.Migrations
                             Address = "423 6th Ave S",
                             CheersCount = 0,
                             City = "Nashville",
+                            ImagePath = "~/Images/yee_haw.jpg",
                             Name = "Yee Haw",
                             Phone = "(615)647-8272",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
@@ -96,10 +99,119 @@ namespace Beer_Quest.Migrations
                             Address = "701 8th Ave S",
                             CheersCount = 0,
                             City = "Nashville",
+                            ImagePath = "~/Images/jackalope.jpg",
                             Name = "Jackalope",
                             Phone = "(615)873-4313",
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
                             ZipCode = 37203
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Address = "800 44th Ave N",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/fatBottom.png",
+                            Name = "Fat Bottom Brewering Co",
+                            Phone = "(615) 678-5715",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37209
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Address = "904 51st Ave N",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/hardingHouse.png",
+                            Name = "Harding House Brewing Co",
+                            Phone = "(615) 678-1047",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37209
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Address = "7300 Charlotte Pike",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/tailgate_brewery.jpeg",
+                            Name = "TailGate Brewery",
+                            Phone = "(615) 861-9842",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37209
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Address = "8098 TN-100",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/brewhouse100.jpeg",
+                            Name = "Brewhouse 100",
+                            Phone = "(615) 673-2981",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37221
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Address = "30 Oldham St",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/littleHarpeth.png",
+                            Name = "Little Harpeth Brewing",
+                            Phone = "(615) 942-7066",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37213
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Address = "928 5th Ave S",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/newHeights.jpeg",
+                            Name = "New Heights Brewing Company",
+                            Phone = "(615) 490-6901",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37203
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Address = "5901 California Ave Suite 105",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/turtle.png",
+                            Name = "Turtle Anarchy Brewing Co",
+                            Phone = "N/A",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37209
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Address = "101 Van Buren St",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/beardedIris.png",
+                            Name = "Bearded Iris Brewing",
+                            Phone = "(615) 928-7988",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37208
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Address = "903 Main St",
+                            CheersCount = 0,
+                            City = "Nashville",
+                            ImagePath = "~/Images/smithLentz.png",
+                            Name = "Smith & Lentz Brewing",
+                            Phone = "(615) 436-2195",
+                            UserId = "00000000-ffff-ffff-ffff-ffffffffffff",
+                            ZipCode = 37206
                         });
                 });
 
@@ -137,11 +249,13 @@ namespace Beer_Quest.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("BreweryId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Comment");
                 });
@@ -842,13 +956,13 @@ namespace Beer_Quest.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3bde06fa-8bfd-415d-9727-89f8111f5ab0",
+                            ConcurrencyStamp = "4e08aba6-904d-4ce8-83bb-fd595519efdb",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMqxkYHw2MfSa4al+fdu7KV9axv+ag0TdpMfp1j/Lq1w2c6OnVUTQEdaQrCv8t97Uw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEc09YdNE5LsnOVl6McYKTuiZS9HwUkfAxcz9H3C4EWdZ7WaC0p/TcBH6FRb9moWMQ==",
                             PhoneNumber = "(989)464-5890",
                             PhoneNumberConfirmed = true,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
@@ -870,7 +984,7 @@ namespace Beer_Quest.Migrations
 
             modelBuilder.Entity("Beer_Quest.Models.Cheer", b =>
                 {
-                    b.HasOne("Beer_Quest.Models.Brewery", null)
+                    b.HasOne("Beer_Quest.Models.Brewery", "Brewery")
                         .WithMany("Cheers")
                         .HasForeignKey("BreweryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -879,11 +993,15 @@ namespace Beer_Quest.Migrations
 
             modelBuilder.Entity("Beer_Quest.Models.Comment", b =>
                 {
-                    b.HasOne("Beer_Quest.Models.Brewery", null)
+                    b.HasOne("Beer_Quest.Models.Brewery", "Brewery")
                         .WithMany("Comments")
                         .HasForeignKey("BreweryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Beer_Quest.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Beer_Quest.Models.Drink", b =>

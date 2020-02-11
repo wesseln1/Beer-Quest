@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Beer_Quest.Data;
 using Beer_Quest.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Beer_Quest.Controllers
 {
@@ -26,7 +27,8 @@ namespace Beer_Quest.Controllers
         // GET: Cheers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cheer.ToListAsync());
+            var user = await GetCurrentUserAsync();
+            return View(await _context.Cheer.Include(c => c.Brewery).Where(c => c.UserId == user.Id).ToListAsync());
         }
 
         // GET: Cheers/Details/5
@@ -50,6 +52,7 @@ namespace Beer_Quest.Controllers
         // POST: Cheers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int breweryId)
@@ -57,6 +60,11 @@ namespace Beer_Quest.Controllers
             var user = await GetCurrentUserAsync();
             var cheers = await _context.Cheer.Where(c => c.UserId == user.Id && c.BreweryId == breweryId).FirstOrDefaultAsync();
             var cheer = new Cheer();
+
+            if(user == null)
+            {
+
+            }
 
             if (cheers != null)
             {

@@ -20,6 +20,7 @@
         </p>
     }
 }
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -41,34 +42,47 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
-                    <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@item.Id">
-                        <button type="submit">Cheers</button>
-                    </form> @Html.DisplayFor(modelItem => item.CheersCount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.City)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
-                </td>
-                <td>
-                    @if (user != null)
-                    {
-                        @if (user.UserTypeId == 1 || user.UserTypeId == 2 && user.Id == item.UserId)
+            <card>
+                <tr>
+                    <td>
+                        <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + item.ImagePath)" alt="" />
+                        @if (user != null)
                         {
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a>
+                            <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@item.Id">
+                                <button type="submit" class="image-button"><img class="image-button" src="~/Images/CheersButton.png" height="25px" width="25px" /></button>
+                                @Html.DisplayFor(modelItem => item.CheersCount)
+                            </form>
                         }
-                    }
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                    @*< asp-action="Delete" asp-route-id="@item.Id">Delete</>*@
-                </td>
-            </tr>
+                        else
+                        {
+                            <p>
+                                Cheers:
+                                @Html.DisplayFor(modelItem => item.CheersCount)
+                            </p>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @if (user != null)
+                        {
+                            @if (user.UserTypeId == 1 || user.UserTypeId == 2 && user.Id == item.UserId)
+                            {
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit |</a>
+                            }
+                        }
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        @*< asp-action="Delete" asp-route-id="@item.Id">Delete</>*@
+                    </td>
+                </tr>
+            </card>
         }
     </tbody>
 </table>

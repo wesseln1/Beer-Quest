@@ -12,5 +12,6 @@ namespace Beer_Quest.Models
         public int BreweryId { get; set; }
         public string UserId { get; set; }
         public Brewery Brewery { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }
