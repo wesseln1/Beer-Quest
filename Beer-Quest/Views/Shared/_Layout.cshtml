@@ -39,6 +39,7 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                 </ul>
+                <partial name="_LoginPartial" />
                 <form asp-controller="Breweries" asp-action="Index">
                     <div class="input-group">
                         <input type="text" name="searchString" class="form-control" placeholder="Search by city or brewery name" />

@@ -84,15 +84,16 @@ html {
 
 .card-header-footer {
     background-color: #034381 !important;
+    color: #0388A6 !important;
 }
 
 .card {
-    background-color: #CBE4F5 !important;
+    background-color: #0388A6 !important;
 }
 
-.card-items
-{
+.card-items {
     background-color: transparent !important;
+    color: #034381 !important;
 }
 
 .main-home {
@@ -132,6 +133,10 @@ body {
     font-size: 5em !important;
 }
 
+.logout {
+    color: #025E73 !important;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -141,7 +146,7 @@ body {
 }
 
 .footer-item {
-    color: #4BB0EA !important;
+    color: #025E73 !important;
 }
 
 .card-divs {
