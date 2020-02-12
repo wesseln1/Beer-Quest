@@ -14,9 +14,13 @@
 {
     if (user.UserTypeId == 1)
     {
-        <p class="text-center">
-            <a asp-action="Create">Create New Brewery</a>
-        </p>
+        <div class="create-brewery-wrapper">
+            <div class="create-brewery-button">
+                <p class="text-center">
+                    <a asp-action="Create">Create New Brewery</a>
+                </p>
+            </div>
+        </div>
     }
 }
 
@@ -29,14 +33,14 @@
             <div style="width:16%;">
                 @if (user != null)
                 {
-                    <form class="" style="padding:5px;" asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@item.Id">
-                        <button type="submit" class="image-button" style="background-color: #034381 !important;"><img class="image-button" src="~/Images/CheersButton.png" style="height:25px; width:25px;" /></button>
-                        @Html.DisplayFor(modelItem => item.CheersCount)
+                    <form class="cheers-button-form" style="padding:5px;" asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@item.Id">
+                        <button type="submit" class=" btn btn-outline-info" style="background-color: #034381 !important;"><img class="image-button" src="~/Images/CheersButton.png" style="height:25px; width:25px;" /></button>
+                        <p style="color: ghostwhite;">@Html.DisplayFor(modelItem => item.CheersCount)</p>
                     </form>
                 }
                 else
                 {
-                    <p>
+                    <p class="cheers-button-form" style="color: ghostwhite;">
                         Cheers:
                         @Html.DisplayFor(modelItem => item.CheersCount)
                     </p>
@@ -57,11 +61,11 @@
                 {
                     @if (user.UserTypeId == 2 && user.Id == item.UserId)
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>*@
                     }
                     else
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>
+                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>*@
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete |</a>
                     }
                 }

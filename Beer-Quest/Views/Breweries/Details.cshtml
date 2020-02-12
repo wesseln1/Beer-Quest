@@ -10,81 +10,70 @@
 
 @{var user = await UserManager.GetUserAsync(User);}
 
-<h1>Details</h1>
+<div class="card-divs">
+    <div class="card" style="width: 50%;">
+        <h3 class="card-header card-header-footer">@Html.DisplayFor(model => model.Name)</h3>
+        <img class="img-thumbnail" style="height: 125px; width: 150px; padding:0px; margin:5px;" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
+        <div style="width:16%;">
+            @if (user != null)
+            {
+                <form class="cheers-button-form" style="padding:5px;" asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@Model.Id">
+                    <button type="submit" class=" btn btn-outline-info" style="background-color: #034381 !important;"><img class="image-button" src="~/Images/CheersButton.png" style="height:25px; width:25px;" /></button>
+                    <p style="color: ghostwhite;">@Html.DisplayFor(model => model.CheersCount)</p>
 
-<div class=" text-center">
-    <h4 >
-        <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + Model.ImagePath)" alt="" />
-        @Html.DisplayFor(model => model.Name)
-    </h4>
-    @if (user != null)
-    {
-        <form asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@ViewBag.Brewery.Id">
-            <button type="submit" class="image-button"><img class="image-button" src="~/Images/CheersButton.png" height="25px" width="25px" /></button>
-             @ViewBag.Brewery.CheersCount
-        </form>
-    }
-    else
-    {
-        <p>
-            Cheers:
-            @ViewBag.Brewery.CheersCount
-        </p>
-    }
-    <hr />
-    <dl class="col text-center">
-        <dt class="order-sm-2 ">
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-        <dd class="order-sm-10">
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-        <dt class="order-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class="order-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt class="order-sm-2">
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </dt>
-        <dd class="order-sm-10">
-            @Html.DisplayFor(model => model.ZipCode)
-        </dd>
-        <dt class="order-sm-2">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-        <dd class="order-sm-10">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
-        <dt class="order-sm-2">
-            @Html.DisplayNameFor(model => model.Drinks)
-        </dt>
-        <dd class="order-sm-10">
-            <div>
-
-                @foreach (var drink in Model.Drinks)
+                </form>
+            }
+            else
+            {
+                <p class="cheers-button-form" style="color: ghostwhite;">
+                    Cheers:
+                    @Html.DisplayFor(model => model.CheersCount)
+                </p>
+            }
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item card-items">
+                <p class="font-weight-bold">City: </p>
+                @Html.DisplayFor(model => model.City)
+            </li>
+            <li class="list-group-item card-items">
+                <p class="font-weight-bold">Phone: </p>
+                @Html.DisplayFor(model => model.Phone)
+            </li>
+            <li class="list-group-item card-items">
+                <p class="font-weight-bold">Drinks:</p>
+                @if (Model.Drinks.Count() > 0)
                 {
-                    <li>@Html.DisplayFor(model => drink.Name) (@Html.DisplayFor(model => drink.AlcoholPercent)% ALC/VOL)</li>
+                    @foreach (var item in Model.Drinks)
+                    {
+                        <p>@item.Name (@item.AlcoholPercent% alc/vol)</p>
+                    }
                 }
-            </div>
-        </dd>
-    </dl>
-    <div class="text-center">
-        <form asp-action="Index" asp-controller="Comments" asp-route-breweryId="@Model.Id">
-            <p>@Html.DisplayFor(model => model.CommentCount) Total Comments</p>
-            <button>View Comments</button>
-        </form>
+                else
+                {
+                    <p>Sorry, no drinks are posted for this brewery yet.. :(</p>
+                }
+                <a class=" btn btns" style="background-color: #033E76; border-radius: 15px; color: ghostwhite;" asp-action="Create" asp-controller="Drinks" asp-route-breweryId="@Model.Id">Add Drink</a>
+            </li>
+            <li class="list-group-item card-items">
+                <p style="color: ghostwhite;">@Model.CommentCount </p>
+                <a asp-action="Index" asp-controller="Comments" asp-route-breweryId="@Model.Id">View Comments</a>
+            </li>
+        </ul>
+        <div class="card-body card-header-footer">
+            @if (user != null)
+            {
+                @if (user.UserTypeId == 2 && user.Id == Model.UserId)
+                {
+                    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit Brewery |</a>*@
+                }
+                else if (user.UserTypeId == 1)
+                {
+                    @*<a asp-action="Edit" asp-route-id="@Model.Id">Edit Brewery |</a>*@
+                    <a asp-action="Delete" asp-route-id="@Model.Id">Delete |</a>
+                }
+            }
+            <a asp-action="Index">Back To List</a>
+        </div>
     </div>
-</div>
-<div>
-    @if (user == null)
-    {
-        <a asp-area="Identity" asp-page="/Account/Login">Login |</a>
-    }
-    else if (user.UserTypeId == 1 || user.UserTypeId == 2)
-    {
-        <a asp-action="Edit" asp-route-id="@Model.Id">Edit |</a>
-    }
-    <a asp-action="Index">Back to List</a>
 </div>

@@ -15,8 +15,8 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Brew Quest</a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 65px;">
+            <a class="navbar-brand" href="#" style="width: 85px;"><img src="~/Images/OverProject.png" style="width:80px; height:70px; margin-top: -10px;"/></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -39,6 +39,7 @@
                         <a class="nav-link" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li>
                 </ul>
+                <partial name="_LoginPartial" />
                 <form asp-controller="Breweries" asp-action="Index">
                     <div class="input-group">
                         <input type="text" name="searchString" class="form-control" placeholder="Search by city or brewery name" />
