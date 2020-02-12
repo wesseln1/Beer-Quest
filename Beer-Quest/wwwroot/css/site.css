@@ -109,6 +109,19 @@ html {
     border-radius: 25px !important;
 }
 
+.create-card-div {
+    display: flex;
+    place-content: center;
+}
+
+.create-card {
+    width: 50%;
+    background-color: #0388A6 !important;
+    border: solid 5px !important;
+    border-color: #033E76 !important;
+    border-radius: 25px !important;
+}
+
 .card-items {
     background-color: transparent !important;
     color: ghostwhite !important;

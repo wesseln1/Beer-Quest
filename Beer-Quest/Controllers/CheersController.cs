@@ -9,6 +9,7 @@ using Beer_Quest.Data;
 using Beer_Quest.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
+using Beer_Quest.Models.ViewModels;
 
 namespace Beer_Quest.Controllers
 {
@@ -28,7 +29,20 @@ namespace Beer_Quest.Controllers
         public async Task<IActionResult> Index()
         {
             var user = await GetCurrentUserAsync();
-            return View(await _context.Cheer.Include(c => c.Brewery).Where(c => c.UserId == user.Id).ToListAsync());
+            var cheer = await _context.Cheer.Include(c=> c.Brewery).Where(c => c.UserId == user.Id).Select(c => new BreweryCheerCountViewModel 
+            { 
+                Name = c.Brewery.Name,
+                Id = c.Brewery.Id,
+                Address = c.Brewery.Address,
+                City = c.Brewery.City,
+                ZipCode = c.Brewery.ZipCode,
+                Phone = c.Brewery.Phone,
+                CheersCount = c.Brewery.Cheers.Count(),
+                CommentCount = c.Brewery.Comments.Count(),
+                ImagePath = c.Brewery.ImagePath
+
+            }).ToListAsync();
+            return View(cheer);
         }
 
         // GET: Cheers/Details/5
