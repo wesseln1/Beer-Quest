@@ -9,7 +9,8 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #4BB0EA !important;
+    
 }
 
 .cheersButton {
@@ -77,14 +78,75 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+.footer-parent{
+
 }
+
+.card-header-footer {
+    background-color: #034381 !important;
+}
+
+.card {
+    background-color: #CBE4F5 !important;
+}
+
+.card-items
+{
+    background-color: transparent !important;
+}
+
+.main-home {
+    text-align: -webkit-center;
+
+}
+/*.card-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    max-width: 50%;
+}*/
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: fixed;
+    background-image: url("../Images/ImagefromiOS.jpg") !important;
+    background-position: center;
+    background-size: 100% !important;
+    background-repeat: no-repeat;
+}
+.homeBody {
+    width: 50% !important;
+    /*height: 200px !important;*/
+    margin: 20px;
+
+}
+
+.title-block {
+    height: 300px !important;
+    justify-content: space-evenly;
+}
+
+.title-text {
+    
+    font-size: 5em !important;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+.footer-item {
+    color: #4BB0EA !important;
+}
+
+.card-divs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
 }

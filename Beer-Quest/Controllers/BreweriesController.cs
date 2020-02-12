@@ -93,7 +93,7 @@ namespace Beer_Quest.Controllers
             {
                 return NotFound();
             }
-            ViewBag.Brewery = brewery.Id;
+            ViewBag.Brewery = brewery;
 
             return View(brewery);
         }
