@@ -95,6 +95,10 @@ html {
     background-color: transparent !important;
 }
 
+.main-home {
+    text-align: -webkit-center;
+
+}
 /*.card-home {
     display: flex;
     align-items: center;
@@ -102,7 +106,6 @@ html {
     margin: 10px;
     max-width: 50%;
 }*/
-
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
@@ -113,9 +116,22 @@ body {
     background-repeat: no-repeat;
 }
 .homeBody {
-    width: 100% !important;
-    background-image: url("") !important;
+    width: 50% !important;
+    /*height: 200px !important;*/
+    margin: 20px;
+
 }
+
+.title-block {
+    height: 300px !important;
+    justify-content: space-evenly;
+}
+
+.title-text {
+    
+    font-size: 5em !important;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
