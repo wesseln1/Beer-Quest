@@ -10,58 +10,70 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Index</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Brewery.ImagePath)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brewery.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brewery.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brewery.Phone)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                <img class="img-thumbnail" style="max-width: 150px;" src="@Url.Content("~/images/" + ViewBag.BreweryImage)" alt="" />
-            </td>
-            <td>
-                @brewery.Name
-            </td>
-            <td>
-                @brewery.City
-            </td>
-            <td>
-                @brewery.Phone
-            </td>
-            <td>
-                @if (user != null)
-                {
-                    @if (user.UserTypeId == 1 || user.UserTypeId == 2 && user.Id.Equals(userId))
-                    {
-                        <a asp-action="Edit" asp-route-id="@Html.DisplayFor(model => model.Brewery.Id)">Edit |</a>
-                    }
-                }
-                <a asp-action="Details" asp-route-id="@Html.DisplayFor(model => model.Brewery.Id)">Details</a>
-                @*< asp-action="Delete" asp-route-id="@item.Id">Delete</>*@
-            </td>
-        </tr>
-    </tbody>
-</table>
-<div>
-    <form asp-action="Create" asp-controller="Comments" asp-route-breweryId="@ViewBag.BreweryId">
-        <div class="form-group">
-            <input asp-for="UserComment" class="form-control" />
+
+<div class="card-divs">
+    <div class="card" style="width: 50%;">
+        <h3 class="card-header card-header-footer">@ViewBag.Brewery.Name</h3>
+        <img class="img-thumbnail" style="height: 125px; width: 150px; padding:0px; margin:5px;" src="@Url.Content("~/images/" + ViewBag.Brewery.ImagePath)" alt="" />
+        <div style="width:16%;">
+            @if (user != null)
+            {
+                <form class="cheers-button-form" style="padding:5px;" asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@ViewBag.Brewery.Id">
+                    <button type="submit" class=" btn btn-outline-info" style="background-color: #034381 !important;"><img class="image-button" src="~/Images/CheersButton.png" style="height:25px; width:25px;" /></button>
+                    @ViewBag.Brewery.CheersCount
+                </form>
+            }
+            else
+            {
+                <p class="cheers-button-form" style="color: ghostwhite;">
+                    Cheers:
+                    @ViewBag.Brewery.CheersCount
+                </p>
+            }
         </div>
-        <button type="submit">Create New</button>
-    </form>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item card-items">
+                <p class="font-weight-bold">City: </p>
+                @ViewBag.Brewery.City
+            </li>
+            <li class="list-group-item card-items">
+                <p class="font-weight-bold">Phone: </p>
+                @ViewBag.Brewery.Phone
+            </li>
+            <li class="list-group-item card-items">
+                <p class="font-weight-bold">Comments: </p>
+                <p>No comments on this brewery yet!</p>
+            </li>
+        </ul>
+        <div>
+            @if (user != null)
+            {
+                <form class="comment-form" asp-action="Create" asp-controller="Comments" asp-route-breweryId="@ViewBag.BreweryId">
+                    <div class="form-group">
+                        <input asp-for="UserComment" class="form-control" />
+                    </div>
+                    <button type="submit">Comment</button>
+                </form>
+            }
+            else
+            {
+                <p>*Please sign in to leave a comment.*</p>
+            }
+        </div>
+        <div class="card-body card-header-footer">
+            @if (user != null)
+            {
+                @if (user.UserTypeId == 2 && user.Id == Model.Brewery.UserId)
+                {
+                    <a asp-action="Edit" asp-route-id="@ViewBag.Brewery.Id">Edit Brewery |</a>
+                }
+                else
+                {
+                    <a asp-action="Edit" asp-route-id="@ViewBag.Brewery.Id">Edit Brewery |</a>
+                    <a asp-action="Delete" asp-route-id="@ViewBag.Brewery.Id">Delete |</a>
+                }
+            }
+            <a asp-action="Details" asp-controller="Breweries" asp-route-id="@ViewBag.BreweryId">Back To Brewery Details</a>
+        </div>
+    </div>
 </div>

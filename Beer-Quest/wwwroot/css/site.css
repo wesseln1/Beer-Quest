@@ -2,14 +2,16 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+    color: ghostwhite !important;
+    height: 65px !important;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-    color: #4BB0EA !important;
+    color: ghostwhite !important;
     
 }
 
@@ -26,16 +28,21 @@ a {
 .image-button {
     max-height: 150px !important;
     max-width: 150px !important;
+    border-radius: 15px !important;
 }
 
 button span {
     display: none !important;
 }
 
+.cheers-button-form {
+    margin-left: 15px !important;
+}
+
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -71,6 +78,11 @@ button.accept-policy {
   line-height: inherit;
 }
 
+.btns {
+    border-radius: 15px !important;
+    border-color: #033E76 !important;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -78,27 +90,32 @@ html {
   min-height: 100%;
 }
 
-.footer-parent{
-
+.img-thumbnail {
+    margin-left: 18px !important;
 }
 
 .card-header-footer {
     background-color: #034381 !important;
-    color: #0388A6 !important;
+    color: ghostwhite !important;
+    margin: 5px;
+    border: 5px;
+    border-radius: 25px !important;
 }
 
 .card {
     background-color: #0388A6 !important;
+    border: solid 5px !important;
+    border-color: #033E76 !important;
+    border-radius: 25px !important;
 }
 
 .card-items {
     background-color: transparent !important;
-    color: #034381 !important;
+    color: ghostwhite !important;
 }
 
-.main-home {
+.home-div {
     text-align: -webkit-center;
-
 }
 /*.card-home {
     display: flex;
@@ -120,7 +137,9 @@ body {
     width: 50% !important;
     /*height: 200px !important;*/
     margin: 20px;
-
+    border: solid 5px !important;
+    border-radius: 50px !important;
+    border-color: #034381 !important;
 }
 
 .title-block {
@@ -129,12 +148,16 @@ body {
 }
 
 .title-text {
-    
+    color: ghostwhite !important;
     font-size: 5em !important;
 }
 
+.title-text-info {
+    color: ghostwhite !important;
+}
+
 .logout {
-    color: #025E73 !important;
+    color: ghostwhite !important;
 }
 
 .footer {
@@ -146,7 +169,7 @@ body {
 }
 
 .footer-item {
-    color: #025E73 !important;
+    color: ghostwhite !important;
 }
 
 .card-divs {
@@ -154,4 +177,23 @@ body {
     align-items: center;
     justify-content: center;
     margin: 10px;
+}
+
+.comment-form {
+    margin: 15px;
+}
+
+.create-brewery-wrapper {
+    display: flex;
+    place-content: center;
+}
+
+.create-brewery-button {
+    border: solid 5px !important;
+    border-radius: 15px !important;
+    border-color: #034381 !important;
+    background-color: #0388A6 !important;
+    width: 20%;
+    margin-top: 15px;
+    height: 38px !important;
 }
