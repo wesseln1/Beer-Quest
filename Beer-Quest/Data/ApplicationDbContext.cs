@@ -86,7 +86,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37203,
                     Phone = "(615)748-1399",
                     CheersCount = 0,
-                    ImagePath = "czanns.jpg",
+                    ImagePath = "czanns.jpeg",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -206,7 +206,7 @@ namespace Beer_Quest.Data
                     ZipCode = 37208,
                     Phone = "(615) 928-7988",
                     CheersCount = 0,
-                    ImagePath = "beardedIris.png",
+                    ImagePath = "beardedIris2.png",
                     UserId = user.Id
                 },
                 new Brewery()
@@ -220,8 +220,223 @@ namespace Beer_Quest.Data
                     CheersCount = 0,
                     ImagePath = "smithLentz.png",
                     UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 20,
+                    Name = "Sierra Nevada Brewing Co.",
+                    City = "Chico",
+                    Address = "1075 East 20th Street",
+                    ZipCode = 95928,
+                    Phone = "(530) 893-3520",
+                    CheersCount = 0,
+                    ImagePath = "sierraNevada.jpeg",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 21,
+                    Name = "Gambrinus Company",
+                    City = "San Antonio",
+                    Address = "14800 San Pedro, Third Floor",
+                    ZipCode = 78232,
+                    Phone = "(210) 490-9128",
+                    CheersCount = 0,
+                    ImagePath = "gambrinus.jpeg",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 22,
+                    Name = "New Belgium Brewing Company",
+                    City = "Fort Collins",
+                    Address = "500 Linden St",
+                    ZipCode = 80524,
+                    Phone = "(970) 221-0524",
+                    CheersCount = 0,
+                    ImagePath = "newBelgium.png",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 23,
+                    Name = "CANarchy",
+                    City = "Longmont",
+                    Address = "1640 S Sunset St",
+                    ZipCode = 80501,
+                    Phone = "(303) 776-1914",
+                    CheersCount = 0,
+                    ImagePath = "CANarchy.png",
+                    UserId = user.Id
+                },
+                new Brewery()
+                {
+                    Id = 24,
+                    Name = "Bells",
+                    City = "Kalamazoo",
+                    Address = "355 E. Kalamazoo Ave",
+                    ZipCode = 49007,
+                    Phone = "(269) 382-2332",
+                    CheersCount = 0,
+                    ImagePath = "bells.png",
+                    UserId = user.Id
                 }
-
+                //new Brewery()
+                //{
+                //    Id = 25,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 26,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 27,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 28,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 29,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 30,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 31,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 32,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 33,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 34,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 35,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //},
+                //new Brewery()
+                //{
+                //    Id = 36,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //}, 
+                //new Brewery()
+                //{
+                //    Id = 37,
+                //    Name = "New Belgium Brewing Company",
+                //    City = "Fort Collins",
+                //    Address = "500 Linden St",
+                //    ZipCode = 80524,
+                //    Phone = "(970) 221-0524",
+                //    CheersCount = 0,
+                //    ImagePath = "newBelgium.png",
+                //    UserId = user.Id
+                //}
             );
 
             modelBuilder.Entity<Drink>().HasData(

@@ -19,14 +19,14 @@
             {
                 <form class="cheers-button-form" style="padding:5px;" asp-action="Create" asp-controller="Cheers" asp-route-breweryId="@ViewBag.Brewery.Id">
                     <button type="submit" class=" btn btns" style="background-color: #034381 !important;"><img class="image-button" src="~/Images/CheersButton.png" style="height:25px; width:25px;" /></button>
-                    @ViewBag.Brewery.CheersCount
+                    <p style="color: ghostwhite;">@ViewBag.CheersCount</p>
                 </form>
             }
             else
             {
                 <p class="cheers-button-form" style="color: ghostwhite;">
                     Cheers:
-                    @ViewBag.Brewery.CheersCount
+                    @ViewBag.CheersCount
                 </p>
             }
         </div>
@@ -74,7 +74,7 @@
             }
             else
             {
-                <p>*Please sign in to leave a comment.*</p>
+                <p style="color: ghostwhite; margin-left: 10px;">*Please sign in to leave a comment.*</p>
             }
         </div>
         <div class="card-body card-header-footer">
@@ -84,7 +84,7 @@
                 {
                     <a asp-action="Edit" asp-route-id="@ViewBag.Brewery.Id">Edit Brewery |</a>
                 }
-                else
+                else if(user.UserTypeId == 1)
                 {
                     <a asp-action="Edit" asp-route-id="@ViewBag.Brewery.Id">Edit Brewery |</a>
                     <a asp-action="Delete" asp-route-id="@ViewBag.Brewery.Id">Delete |</a>

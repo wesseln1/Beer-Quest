@@ -28,11 +28,12 @@ namespace Beer_Quest.Controllers
         // GET: Comments
         public async Task<IActionResult> Index(int breweryId)
         {
-            var comments = await _context.Comment.Where(c => c.BreweryId == breweryId).ToListAsync();
-            var brewery = _context.Brewery.FirstOrDefault(b => b.Id == breweryId);
+            var comments = await _context.Comment.Include(c => c.User).Where(c => c.BreweryId == breweryId).ToListAsync();
+            var brewery = _context.Brewery.Include(b=> b.Cheers).FirstOrDefault(b => b.Id == breweryId);
             ViewBag.BreweryId = breweryId;
             ViewBag.Brewery = brewery;
             ViewBag.BreweryImage = brewery.ImagePath;
+            ViewBag.CheersCount = brewery.Cheers.Count();
             if (comments.Count() > 0)
             {
                 var viewModel = new BreweryCommentViewModel

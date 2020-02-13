@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Beer_Quest.Migrations
 {
-    public partial class init : Migration
+    public partial class thirdinit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -335,26 +335,31 @@ namespace Beer_Quest.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName", "DateOfBirth", "FirstName", "LastName", "UserTypeId" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "4e08aba6-904d-4ce8-83bb-fd595519efdb", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEEc09YdNE5LsnOVl6McYKTuiZS9HwUkfAxcz9H3C4EWdZ7WaC0p/TcBH6FRb9moWMQ==", "(989)464-5890", true, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", 1 });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "1f3690f9-c9e2-4585-b360-419b75b71c48", "ApplicationUser", "admin@admin.com", true, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAEAACcQAAAAEPAO7EFfAM5H0CTiWB8Iy6PM3jmb5Ae+aMXti83MIr8dYkSWi+N8lcyJK4b1Bl4kaQ==", "(989)464-5890", true, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "admin@admin.com", "04-29-1997", "admin", "admin", 1 });
 
             migrationBuilder.InsertData(
                 table: "Brewery",
                 columns: new[] { "Id", "Address", "CheersCount", "City", "ImagePath", "Name", "Phone", "UserId", "ZipCode" },
                 values: new object[,]
                 {
-                    { 1, "809 Ewing Ave", 0, "Nashville", "~/Images/tennesseeBrewWorks.png", "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 2, "505 Lea Ave, Nashville", 0, "Nashville", "~/Images/czanns.jpg", "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 3, "423 6th Ave S", 0, "Nashville", "~/Images/yee_haw.jpg", "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 4, "701 8th Ave S", 0, "Nashville", "~/Images/jackalope.jpg", "Jackalope", "(615)873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 11, "800 44th Ave N", 0, "Nashville", "~/Images/fatBottom.png", "Fat Bottom Brewering Co", "(615) 678-5715", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
-                    { 12, "904 51st Ave N", 0, "Nashville", "~/Images/hardingHouse.png", "Harding House Brewing Co", "(615) 678-1047", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
-                    { 13, "7300 Charlotte Pike", 0, "Nashville", "~/Images/tailgate_brewery.jpeg", "TailGate Brewery", "(615) 861-9842", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
-                    { 14, "8098 TN-100", 0, "Nashville", "~/Images/brewhouse100.jpeg", "Brewhouse 100", "(615) 673-2981", "00000000-ffff-ffff-ffff-ffffffffffff", 37221 },
-                    { 15, "30 Oldham St", 0, "Nashville", "~/Images/littleHarpeth.png", "Little Harpeth Brewing", "(615) 942-7066", "00000000-ffff-ffff-ffff-ffffffffffff", 37213 },
-                    { 16, "928 5th Ave S", 0, "Nashville", "~/Images/newHeights.jpeg", "New Heights Brewing Company", "(615) 490-6901", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
-                    { 17, "5901 California Ave Suite 105", 0, "Nashville", "~/Images/turtle.png", "Turtle Anarchy Brewing Co", "N/A", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
-                    { 18, "101 Van Buren St", 0, "Nashville", "~/Images/beardedIris.png", "Bearded Iris Brewing", "(615) 928-7988", "00000000-ffff-ffff-ffff-ffffffffffff", 37208 },
-                    { 19, "903 Main St", 0, "Nashville", "~/Images/smithLentz.png", "Smith & Lentz Brewing", "(615) 436-2195", "00000000-ffff-ffff-ffff-ffffffffffff", 37206 }
+                    { 1, "809 Ewing Ave", 0, "Nashville", "tennesseeBrewWorks.png", "Tennessee Brew Works", "(615)436-0050", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 22, "500 Linden St", 0, "Fort Collins", "newBelgium.png", "New Belgium Brewing Company", "(970) 221-0524", "00000000-ffff-ffff-ffff-ffffffffffff", 80524 },
+                    { 21, "14800 San Pedro, Third Floor", 0, "San Antonio", "gambrinus.jpeg", "Gambrinus Company", "(210) 490-9128", "00000000-ffff-ffff-ffff-ffffffffffff", 78232 },
+                    { 20, "1075 East 20th Street", 0, "Chico", "sierraNevada.jpeg", "Sierra Nevada Brewing Co.", "(530) 893-3520", "00000000-ffff-ffff-ffff-ffffffffffff", 95928 },
+                    { 19, "903 Main St", 0, "Nashville", "smithLentz.png", "Smith & Lentz Brewing", "(615) 436-2195", "00000000-ffff-ffff-ffff-ffffffffffff", 37206 },
+                    { 18, "101 Van Buren St", 0, "Nashville", "beardedIris2.png", "Bearded Iris Brewing", "(615) 928-7988", "00000000-ffff-ffff-ffff-ffffffffffff", 37208 },
+                    { 17, "5901 California Ave Suite 105", 0, "Nashville", "turtle.png", "Turtle Anarchy Brewing Co", "N/A", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 16, "928 5th Ave S", 0, "Nashville", "newHeights.jpeg", "New Heights Brewing Company", "(615) 490-6901", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 15, "30 Oldham St", 0, "Nashville", "littleHarpeth.png", "Little Harpeth Brewing", "(615) 942-7066", "00000000-ffff-ffff-ffff-ffffffffffff", 37213 },
+                    { 14, "8098 TN-100", 0, "Nashville", "brewhouse100.jpeg", "Brewhouse 100", "(615) 673-2981", "00000000-ffff-ffff-ffff-ffffffffffff", 37221 },
+                    { 13, "7300 Charlotte Pike", 0, "Nashville", "tailgate_brewery.jpeg", "TailGate Brewery", "(615) 861-9842", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 12, "904 51st Ave N", 0, "Nashville", "hardingHouse.png", "Harding House Brewing Co", "(615) 678-1047", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 11, "800 44th Ave N", 0, "Nashville", "fatBottom.png", "Fat Bottom Brewering Co", "(615) 678-5715", "00000000-ffff-ffff-ffff-ffffffffffff", 37209 },
+                    { 4, "701 8th Ave S", 0, "Nashville", "jackalope.jpg", "Jackalope", "(615)873-4313", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 3, "423 6th Ave S", 0, "Nashville", "yee_haw.jpg", "Yee Haw", "(615)647-8272", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 2, "505 Lea Ave, Nashville", 0, "Nashville", "czanns.jpeg", "Czans", "(615)748-1399", "00000000-ffff-ffff-ffff-ffffffffffff", 37203 },
+                    { 23, "1640 S Sunset St", 0, "Longmont", "CANarchy.png", "CANarchy", "(303) 776-1914", "00000000-ffff-ffff-ffff-ffffffffffff", 80501 },
+                    { 24, "355 E. Kalamazoo Ave", 0, "Kalamazoo", "bells.png", "Bells", "(269) 382-2332", "00000000-ffff-ffff-ffff-ffffffffffff", 49007 }
                 });
 
             migrationBuilder.InsertData(
