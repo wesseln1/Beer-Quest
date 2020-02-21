@@ -8,53 +8,63 @@
 
 <h4>Brewery</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+
+<div class="create-card-div" style="margin: 10px;">
+    <div class="create-card">
+        <h3 class="card-header card-header-footer">Login</h3>
+        <div class="row">
+            <div style="width: 50%; margin-left: 40px;">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="Id" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Address" class="control-label"></label>
+                        <input asp-for="Address" class="form-control" />
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="City" class="control-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ZipCode" class="control-label"></label>
+                        <input asp-for="ZipCode" class="form-control" />
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CheersCount" class="control-label"></label>
+                        <input asp-for="CheersCount" class="form-control" />
+                        <span asp-validation-for="CheersCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input asp-for="UserId" class="form-control" type="hidden" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="File" class="control-label"></label>
+                        <input name="file" type="file" class="form-control" value="@Html.DisplayNameFor(model => model.ImagePath)" />
+                        <span asp-validation-for="File" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ZipCode" class="control-label"></label>
-                <input asp-for="ZipCode" class="form-control" />
-                <span asp-validation-for="ZipCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CheersCount" class="control-label"></label>
-                <input asp-for="CheersCount" class="form-control" />
-                <span asp-validation-for="CheersCount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input asp-for="UserId" class="form-control" type="hidden" />
-            </div>
-            <div class="form-group">
-                <label asp-for="File" class="control-label"></label>
-                <input name="file" type="file" class="form-control" value="@Html.DisplayNameFor(model => model.ImagePath)" />
-                <span asp-validation-for="File" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
+        <div class="card-body card-header-footer">
+            <a asp-action="Details" asp-controller="Breweries" asp-route-id="@ViewBag.BreweryId">Back to List</a>
+        </div>
     </div>
 </div>
 
