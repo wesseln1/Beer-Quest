@@ -61,11 +61,11 @@
                 {
                     @if (user.UserTypeId == 2 && user.Id == item.UserId)
                     {
-                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>*@
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>
                     }
                     else if(user.UserTypeId == 1)
                     {
-                        @*<a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>*@
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit Brewery |</a>
                         <a asp-action="Delete" asp-route-id="@item.Id">Delete |</a>
                     }
                 }
