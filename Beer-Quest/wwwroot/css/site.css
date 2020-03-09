@@ -37,6 +37,7 @@ button span {
 
 .cheers-button-form {
     margin-left: 15px !important;
+    color: ghostwhite;
 }
 
 .btn-primary {
@@ -107,9 +108,9 @@ html {
 }
 
 .card {
-    /*background-color: #0388A6 !important;*/
+    background-color: #0388A6 !important;
     border: solid 5px !important;
-    border-color: #04519B !important;
+    border-color: #033E76 !important;
     border-radius: 25px !important;
 }
 
