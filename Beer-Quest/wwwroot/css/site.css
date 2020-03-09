@@ -109,7 +109,7 @@ html {
 .card {
     /*background-color: #0388A6 !important;*/
     border: solid 5px !important;
-    border-color: #033E76 !important;
+    border-color: #04519B !important;
     border-radius: 25px !important;
 }
 
@@ -213,4 +213,15 @@ body {
     width: 20%;
     margin-top: 15px;
     height: 38px !important;
+}
+
+.logo-img {
+    width: 250px;
+    height: 250px;
+    margin-top: -50px;
+    margin-right: 20px;
+}
+
+.logo-p {
+    margin-top: 60px;
 }
