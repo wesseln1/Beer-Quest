@@ -37,6 +37,7 @@ button span {
 
 .cheers-button-form {
     margin-left: 15px !important;
+    color: ghostwhite;
 }
 
 .btn-primary {
@@ -71,6 +72,10 @@ html {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.logo-title {
+    height: 100px !important;
 }
 
 button.accept-policy {
@@ -209,4 +214,15 @@ body {
     width: 20%;
     margin-top: 15px;
     height: 38px !important;
+}
+
+.logo-img {
+    width: 250px;
+    height: 250px;
+    margin-top: -50px;
+    margin-right: 20px;
+}
+
+.logo-p {
+    margin-top: 60px;
 }
