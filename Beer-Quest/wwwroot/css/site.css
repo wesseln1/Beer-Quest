@@ -107,7 +107,7 @@ html {
 }
 
 .card {
-    background-color: #0388A6 !important;
+    /*background-color: #0388A6 !important;*/
     border: solid 5px !important;
     border-color: #033E76 !important;
     border-radius: 25px !important;
