@@ -23,6 +23,11 @@ namespace Beer_Quest.Controllers
             return View();
         }
 
+        public IActionResult Upcomings()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
